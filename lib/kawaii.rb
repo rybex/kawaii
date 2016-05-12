@@ -1,4 +1,6 @@
-require "kawaii/version"
-
-module Kawaii
-end
+require 'rack'
+require 'kawaii/app'
+require 'kawaii/version'
+require 'kawaii/errors'
+require 'kawaii/routing/routes'
+require 'kawaii/routing/route'
