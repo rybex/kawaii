@@ -187,6 +187,30 @@ module Kawaii::Routing
       end
     end
 
+    describe "namespace" do
+      before(:each) do
+        Routes.reset
+      end
+
+      it 'add new routes with namespace added to path' do
+        Class.new(Routes) do
+          namespace :test_namespace do
+            get    :get_path,    "test#get_action"
+            post   :post_path,   "test#post_action"
+            put    :put_path,    "test#put_action"
+            delete :delete_path, "test#delete_action"
+          end
+        end
+
+        expect(Routes.routes.length).to eq 4
+
+        verify_route(Routes.routes[0], :GET,    'test_namespace/test#get_action',    NilClass, '/test_namespace/get_path')
+        verify_route(Routes.routes[1], :POST,   'test_namespace/test#post_action',   NilClass, '/test_namespace/post_path')
+        verify_route(Routes.routes[2], :PUT,    'test_namespace/test#put_action',    NilClass, '/test_namespace/put_path')
+        verify_route(Routes.routes[3], :DELETE, 'test_namespace/test#delete_action', NilClass, '/test_namespace/delete_path')
+      end
+    end
+
     private
 
     def verify_route(route, method, mapping, handler_class, path)

@@ -21,6 +21,10 @@ module Kawaii
           create_route(path, mapping, :DELETE, block)
         end
 
+        def namespace(name, &block)
+          Kawaii::Routing::Namespace.new(self, name, &block)
+        end
+
         def routes
           @@routes
         end
