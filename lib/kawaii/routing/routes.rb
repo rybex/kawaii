@@ -21,6 +21,14 @@ module Kawaii
           create_route(path, mapping, :DELETE, block)
         end
 
+        def resources(name, methods = nil, &block)
+          Kawaii::Routing::Resources.new(self, name, methods, &block)
+        end
+
+        def resource(name, methods = nil, &block)
+          Kawaii::Routing::Resource.new(self, name, methods, &block)
+        end
+
         def namespace(name, &block)
           Kawaii::Routing::Namespace.new(self, name, &block)
         end

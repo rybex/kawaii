@@ -22,6 +22,14 @@ class Kawaii::Routing::Namespace
     routes.delete(namespace_path(path), wrap_in_namespace(mapping))
   end
 
+  def resource(resource_name, methods = nil, &block)
+    Kawaii::Routing::Resource.new(routes, resource_name, methods, namespace_name, &block)
+  end
+
+  def resources(resources_name, methods = nil, &block)
+    Kawaii::Routing::Resources.new(routes, resources_name, methods, namespace_name, &block)
+  end
+
   private
   attr_reader :routes, :namespace_name
 
