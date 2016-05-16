@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+require 'kawaii/cli'
+require 'kawaii/generators/new_project'
+Kawaii::CLI.start

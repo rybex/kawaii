@@ -13,8 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/rybex/kawaii'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['lib/**/*.rb']
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.files         = `git ls-files -z -- lib/* bin/* LICENSE.txt README.md kawaii.gemspec`.split("\x0")
+  spec.executables   = ['kawaii-api']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.40'
 
   spec.add_runtime_dependency 'rack',        '~> 1.6.4'
+  spec.add_runtime_dependency 'thor',        '~> 0.19.1'
 end

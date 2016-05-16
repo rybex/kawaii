@@ -1,0 +1,10 @@
+require 'kawaii'
+
+['/app/**/*.rb', '/config/*.rb'].each do |dir|
+  Dir["#{File.dirname(__FILE__)}#{dir}"].each {|file| require file }
+end
+
+module <%= name.capitalize %>
+  class Application < Kawaii::App
+  end
+end
