@@ -6,7 +6,7 @@ module Kawaii
         def initialize(name, path, methods)
           @name    = name.to_s
           @methods = methods
-          @path = path
+          @path    = path
         end
 
         def call
@@ -15,8 +15,7 @@ module Kawaii
           end
         end
 
-        private
-        attr_reader :methods, :name, :path
+        protected
 
         def index
           get_action(name, :get, "#{path}", 'index')
@@ -45,6 +44,9 @@ module Kawaii
         def get_action(name, http_method, path_pattern, controller_method)
           Kawaii::Routing::Action.new(name, http_method, path_pattern, controller_method)
         end
+
+        private
+        attr_reader :methods, :name, :path
       end
     end
   end
