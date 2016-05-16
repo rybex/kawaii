@@ -105,8 +105,12 @@ end
 ```ruby
 class Routes < Kawaii::Routing::Routes
 
-  resources :car do
+  resources :cars do
     resource :wheel
+  end
+
+  resource :human do
+    resources :legs
   end
 end
 ```
@@ -117,7 +121,7 @@ You can specify which methods do you want to generate.
 ```ruby
 class Routes < Kawaii::Routing::Routes
 
-  resources :car,  [:index, :edit]
+  resources :cars, [:index, :edit]
   resource :wheel, [:index]
 end
 ```
@@ -131,6 +135,73 @@ class Routes < Kawaii::Routing::Routes
     resources :wheel
 
     get :wheel, "controller#method"
+  end
+end
+```
+
+## Creating Controllers
+App Controllers should be placed in app/ directory. Every controller class must interhits from `Kawaii:Controller` class.
+
+Let create resource routes.
+
+```ruby
+class Routes < Kawaii::Routing::Routes
+
+  resource :car
+end
+```
+
+Then in `app/car_controller.rb` :
+
+```ruby
+class CarController < Kawaii::Controller
+  def index
+  end
+
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+end
+```
+
+## Using Rack middlewares
+
+```ruby
+class ModifyResponse
+  def initialize(app)
+    @app = app
+  end
+  attr_reader :app
+
+  def call(env)
+    status, headers, response = app.call(env)
+    response[0] = {message: 'Modified hello'}.to_json
+    [status, headers, response]
+  end
+end
+
+class Application < Kawaii::App
+  use ModifyResponse
+end
+```
+
+## Defining custom 404 handler
+
+```ruby
+class Application < Kawaii::App
+  route_not_found do
+    [404, {Rack::CONTENT_TYPE => "application/json"}, [{ message: 'Route not exists'}.to_json]]
   end
 end
 ```
