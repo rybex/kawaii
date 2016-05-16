@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/hanami/hanami.svg?branch=master)](https://travis-ci.org/hanami/hanami)
+[![Gem Version](https://badge.fury.io/rb/kawaii-api.svg)](https://badge.fury.io/rb/kawaii-api)
+[![CodeClimate](https://codeclimate.com/github/rybex/kawaii/badges/gpa.svg)](https://codeclimate.com/github/rybex/kawaii)
+
 # Kawaii
 
 I would like to share new web API framework based on Rack.
@@ -26,6 +30,7 @@ To create new project structure execute:
 
 And then execute:
 
+    $ cd app_name
     $ bundle install
     $ rackup
 
