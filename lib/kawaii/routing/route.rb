@@ -1,20 +1,23 @@
-class Kawaii::Routing::Route
+module Kawaii
+  module Routing
+    class Route
+      def initialize(path, http_method, mapping = nil, block = nil)
+        @path        = path
+        @http_method = http_method
+        @mapping     = mapping
+        @handler     = route_handler(path, mapping, block)
+      end
+      attr_reader :path, :mapping, :handler, :http_method
 
-  def initialize(path, http_method, mapping = nil, block = nil)
-    @path        = path
-    @http_method = http_method
-    @mapping     = mapping
-    @handler     = route_handler(path, mapping, block)
-  end
-  attr_reader :path, :mapping, :handler, :http_method
+      def ==(other)
+        path == other.path && http_method == other.http_method
+      end
 
-  def ==(other)
-    return self.path == other.path && self.http_method == other.http_method
-  end
+      private
 
-  private
-
-  def route_handler(path, mapping, block)
-    Kawaii::Routing::Handler.new(path, mapping, block) if mapping || block
+      def route_handler(path, mapping, block)
+        Handler.new(path, mapping, block) if mapping || block
+      end
+    end
   end
 end

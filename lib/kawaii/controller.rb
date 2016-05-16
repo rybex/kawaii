@@ -1,6 +1,5 @@
 module Kawaii
   class Controller
-
     def initialize(params, request)
       @params  = params
       @request = request

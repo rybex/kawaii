@@ -7,7 +7,7 @@ module Kawaii::Routing
       expect(Routes.routes.length).to eq 0
     end
 
-    describe ":GET" do
+    describe ':GET' do
 
       before(:each) do
         Routes.reset
@@ -52,7 +52,7 @@ module Kawaii::Routing
       end
     end
 
-    describe ":POST" do
+    describe ':POST' do
 
       before(:each) do
         Routes.reset
@@ -97,7 +97,7 @@ module Kawaii::Routing
       end
     end
 
-    describe ":PUT" do
+    describe ':PUT' do
 
       before(:each) do
         Routes.reset
@@ -142,7 +142,7 @@ module Kawaii::Routing
       end
     end
 
-    describe ":DELETE" do
+    describe ':DELETE' do
 
       before(:each) do
         Routes.reset
@@ -187,7 +187,7 @@ module Kawaii::Routing
       end
     end
 
-    describe "namespace" do
+    describe 'namespace' do
       before(:each) do
         Routes.reset
       end
@@ -195,10 +195,10 @@ module Kawaii::Routing
       it 'add new routes with namespace added to path' do
         Class.new(Routes) do
           namespace :test_namespace do
-            get    :get_path,    "test#get_action"
-            post   :post_path,   "test#post_action"
-            put    :put_path,    "test#put_action"
-            delete :delete_path, "test#delete_action"
+            get    :get_path,    'test#get_action'
+            post   :post_path,   'test#post_action'
+            put    :put_path,    'test#put_action'
+            delete :delete_path, 'test#delete_action'
           end
         end
 
@@ -236,7 +236,7 @@ module Kawaii::Routing
       end
     end
 
-    describe "resource" do
+    describe 'resource' do
       before(:each) do
         Routes.reset
       end
@@ -327,7 +327,7 @@ module Kawaii::Routing
       end
     end
 
-    describe "resources" do
+    describe 'resources' do
       before(:each) do
         Routes.reset
       end

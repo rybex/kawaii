@@ -4,8 +4,8 @@ module Kawaii
   describe Router do
 
     let(:router)          { Router.new }
-    let(:correct_request) { {'REQUEST_PATH' => '/test_path', 'REQUEST_METHOD' => 'GET'} }
-    let(:wrong_request)   { {'REQUEST_PATH' => '/wrong_path', 'REQUEST_METHOD' => 'GET'} }
+    let(:correct_request) { { 'REQUEST_PATH' => '/test_path', 'REQUEST_METHOD' => 'GET' } }
+    let(:wrong_request)   { { 'REQUEST_PATH' => '/wrong_path', 'REQUEST_METHOD' => 'GET' } }
 
     before do
       Class.new(Kawaii::Routing::Routes) do

@@ -29,7 +29,7 @@ module Kawaii
       end
 
       def router
-        @router ||= Kawaii::Router.new
+        @router ||= Router.new
       end
 
       def handle_exception(error)

@@ -4,7 +4,6 @@ module Kawaii
       @@routes ||= []
 
       class << self
-
         def get(path, mapping = nil, &block)
           create_route(path, mapping, :GET, block)
         end
@@ -22,15 +21,15 @@ module Kawaii
         end
 
         def resources(name, methods = nil, &block)
-          Kawaii::Routing::Resources.new(self, name, methods, &block)
+          Resources.new(self, name, methods, &block)
         end
 
         def resource(name, methods = nil, &block)
-          Kawaii::Routing::Resource.new(self, name, methods, &block)
+          Resource.new(self, name, methods, &block)
         end
 
         def namespace(name, &block)
-          Kawaii::Routing::Namespace.new(self, name, &block)
+          Namespace.new(self, name, &block)
         end
 
         def routes
@@ -58,9 +57,8 @@ module Kawaii
         end
 
         def route(path, mapping, http_method, block)
-          Kawaii::Routing::Route.new(path, http_method, mapping, block)
+          Route.new(path, http_method, mapping, block)
         end
-
       end
     end
   end
