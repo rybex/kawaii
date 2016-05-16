@@ -3,8 +3,8 @@ module Kawaii
 
     def call(env)
       self.class.process_request(env)
-    rescue => error
-      self.class.handle_exception(error)
+    rescue Kawaii::RouteNotFound => error
+      self.class.handle_route_not_found(error)
     end
 
     class << self
@@ -13,7 +13,7 @@ module Kawaii
         rack_builder.use(middleware, *args, &block)
       end
 
-      def custom_exception(&block)
+      def route_not_found(&block)
         @exception_handler = block
       end
 
@@ -32,7 +32,7 @@ module Kawaii
         @router ||= Router.new
       end
 
-      def handle_exception(error)
+      def handle_route_not_found(error)
         handler = @exception_handler || error_handler(error)
         handler.call(error)
       end
@@ -40,7 +40,7 @@ module Kawaii
       private
 
       def error_handler(error)
-        Proc.new (error) { raise error }
+        Proc.new { raise error }
       end
     end
   end
