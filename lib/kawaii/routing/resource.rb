@@ -36,7 +36,9 @@ module Kawaii
       end
 
       def resource_name
-        "#{namespace}/#{name}"
+        resource_name = name.to_s
+        resource_name.prepend "#{namespace}/" if namespace
+        resource_name
       end
 
       protected
