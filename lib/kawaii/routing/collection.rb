@@ -1,6 +1,6 @@
 module Kawaii
   module Routing
-    class Collection < Kawaii::Routing::Member
+    class Collection < Member
       def initialize(routes, resource, &block)
         @routes   = routes
         @path     = resource_path(resource)

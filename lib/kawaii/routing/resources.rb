@@ -1,6 +1,6 @@
 module Kawaii
   module Routing
-    class Resources < Kawaii::Routing::Resource
+    class Resources < Resource
       METHODS = [:index, :new, :show, :create, :edit, :update, :destroy].freeze
 
       def initialize(routes, name, methods, namespace = nil, parent = nil, &block)

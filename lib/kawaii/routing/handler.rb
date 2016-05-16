@@ -11,8 +11,8 @@ module Kawaii
 
       def call(env)
         request  = rack_request(env)
-        params   = get_url_params(env['REQUEST_PATH'])
-        response = handler.call(params, request)
+        params   = get_url_params(request_path(env))
+        response = call_handler(params, request)
         format_response(response)
       end
 
@@ -40,6 +40,14 @@ module Kawaii
           },
           [response.to_json]
         ]
+      end
+
+      def call_handler(params, request)
+        handler.call(params, request)
+      end
+
+      def request_path(env)
+        env['REQUEST_PATH']
       end
     end
   end
