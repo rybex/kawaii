@@ -24,7 +24,7 @@ module Kawaii
     end
 
     def request_path(env)
-      env['REQUEST_PATH']
+      env['PATH_INFO']
     end
 
     def request_method(env)

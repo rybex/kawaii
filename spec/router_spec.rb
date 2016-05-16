@@ -4,8 +4,8 @@ module Kawaii
   describe Router do
 
     let(:router)          { Router.new }
-    let(:correct_request) { { 'REQUEST_PATH' => '/test_path', 'REQUEST_METHOD' => 'GET' } }
-    let(:wrong_request)   { { 'REQUEST_PATH' => '/wrong_path', 'REQUEST_METHOD' => 'GET' } }
+    let(:correct_request) { { 'PATH_INFO' => '/test_path',  'REQUEST_METHOD' => 'GET' } }
+    let(:wrong_request)   { { 'PATH_INFO' => '/wrong_path', 'REQUEST_METHOD' => 'GET' } }
 
     before do
       Class.new(Kawaii::Routing::Routes) do
@@ -19,7 +19,7 @@ module Kawaii
 
     it 'return route specified in Routes class' do
       route = router.match(correct_request)
-
+      
       expect(route).to_not be         nil
       expect(route.http_method).to eq :GET
       expect(route.mapping).to eq     'test#method'
