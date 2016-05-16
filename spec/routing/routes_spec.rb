@@ -19,7 +19,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :GET, 'test#method', NilClass, '/mapping_path')
+        verify_route(route, :GET, 'test#method', '/mapping_path')
       end
 
       it 'add new route to routes list with blocak as handler' do
@@ -30,7 +30,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :GET, nil, Proc, '/block_path')
+        verify_route(route, :GET, nil, '/block_path')
       end
 
       it 'raise exception if mapping and block set' do
@@ -64,7 +64,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :POST, 'test#method', NilClass, '/mapping_path')
+        verify_route(route, :POST, 'test#method', '/mapping_path')
       end
 
       it 'add new route to routes list with blocak as handler' do
@@ -75,7 +75,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :POST, nil, Proc, '/block_path')
+        verify_route(route, :POST, nil, '/block_path')
       end
 
       it 'raise exception if mapping and block set' do
@@ -109,7 +109,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :PUT, 'test#method', NilClass, '/mapping_path')
+        verify_route(route, :PUT, 'test#method', '/mapping_path')
       end
 
       it 'add new route to routes list with blocak as handler' do
@@ -120,7 +120,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :PUT, nil, Proc, '/block_path')
+        verify_route(route, :PUT, nil, '/block_path')
       end
 
       it 'raise exception if mapping and block set' do
@@ -154,7 +154,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :DELETE, 'test#method', NilClass, '/mapping_path')
+        verify_route(route, :DELETE, 'test#method', '/mapping_path')
       end
 
       it 'add new route to routes list with blocak as handler' do
@@ -165,7 +165,7 @@ module Kawaii::Routing
         end
         route = Routes.routes.first
 
-        verify_route(route, :DELETE, nil, Proc, '/block_path')
+        verify_route(route, :DELETE, nil, '/block_path')
       end
 
       it 'raise exception if mapping and block set' do
@@ -204,10 +204,10 @@ module Kawaii::Routing
 
         expect(Routes.routes.length).to eq 4
 
-        verify_route(Routes.routes[0], :GET,    'test_namespace/test#get_action',    NilClass, '/test_namespace/get_path')
-        verify_route(Routes.routes[1], :POST,   'test_namespace/test#post_action',   NilClass, '/test_namespace/post_path')
-        verify_route(Routes.routes[2], :PUT,    'test_namespace/test#put_action',    NilClass, '/test_namespace/put_path')
-        verify_route(Routes.routes[3], :DELETE, 'test_namespace/test#delete_action', NilClass, '/test_namespace/delete_path')
+        verify_route(Routes.routes[0], :GET,    'test_namespace/test#get_action',    '/test_namespace/get_path')
+        verify_route(Routes.routes[1], :POST,   'test_namespace/test#post_action',   '/test_namespace/post_path')
+        verify_route(Routes.routes[2], :PUT,    'test_namespace/test#put_action',    '/test_namespace/put_path')
+        verify_route(Routes.routes[3], :DELETE, 'test_namespace/test#delete_action', '/test_namespace/delete_path')
       end
 
       it 'allows to create nested resources' do
@@ -220,19 +220,19 @@ module Kawaii::Routing
 
         expect(Routes.routes.length).to eq 13
 
-        verify_route(Routes.routes[0],  :GET,     'test_namespace/wheel#index',    NilClass, '/test_namespace/wheel')
-        verify_route(Routes.routes[1],  :GET,     'test_namespace/wheel#new',      NilClass, '/test_namespace/wheel/new')
-        verify_route(Routes.routes[2],  :POST,    'test_namespace/wheel#create',   NilClass, '/test_namespace/wheel')
-        verify_route(Routes.routes[3],  :GET,     'test_namespace/wheel#edit',     NilClass, '/test_namespace/wheel/edit')
-        verify_route(Routes.routes[4],  :PUT,     'test_namespace/wheel#update',   NilClass, '/test_namespace/wheel')
-        verify_route(Routes.routes[5],  :DELETE,  'test_namespace/wheel#destroy',  NilClass, '/test_namespace/wheel')
-        verify_route(Routes.routes[6],  :GET,     'test_namespace/door#index',     NilClass,  '/test_namespace/door')
-        verify_route(Routes.routes[7],  :GET,     'test_namespace/door#new',       NilClass, '/test_namespace/door/new')
-        verify_route(Routes.routes[8],  :GET,     'test_namespace/door#show',      NilClass, '/test_namespace/door/:id')
-        verify_route(Routes.routes[9],  :POST,    'test_namespace/door#create',    NilClass, '/test_namespace/door')
-        verify_route(Routes.routes[10], :GET,     'test_namespace/door#edit',      NilClass, '/test_namespace/door/:id/edit')
-        verify_route(Routes.routes[11], :PUT,     'test_namespace/door#update',    NilClass, '/test_namespace/door/:id')
-        verify_route(Routes.routes[12], :DELETE,  'test_namespace/door#destroy',   NilClass, '/test_namespace/door/:id')
+        verify_route(Routes.routes[0],  :GET,     'test_namespace/wheel#index',    '/test_namespace/wheel')
+        verify_route(Routes.routes[1],  :GET,     'test_namespace/wheel#new',      '/test_namespace/wheel/new')
+        verify_route(Routes.routes[2],  :POST,    'test_namespace/wheel#create',   '/test_namespace/wheel')
+        verify_route(Routes.routes[3],  :GET,     'test_namespace/wheel#edit',     '/test_namespace/wheel/edit')
+        verify_route(Routes.routes[4],  :PUT,     'test_namespace/wheel#update',   '/test_namespace/wheel')
+        verify_route(Routes.routes[5],  :DELETE,  'test_namespace/wheel#destroy',  '/test_namespace/wheel')
+        verify_route(Routes.routes[6],  :GET,     'test_namespace/door#index',      '/test_namespace/door')
+        verify_route(Routes.routes[7],  :GET,     'test_namespace/door#new',       '/test_namespace/door/new')
+        verify_route(Routes.routes[8],  :GET,     'test_namespace/door#show',      '/test_namespace/door/:id')
+        verify_route(Routes.routes[9],  :POST,    'test_namespace/door#create',    '/test_namespace/door')
+        verify_route(Routes.routes[10], :GET,     'test_namespace/door#edit',      '/test_namespace/door/:id/edit')
+        verify_route(Routes.routes[11], :PUT,     'test_namespace/door#update',    '/test_namespace/door/:id')
+        verify_route(Routes.routes[12], :DELETE,  'test_namespace/door#destroy',   '/test_namespace/door/:id')
       end
     end
 
@@ -247,12 +247,12 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 6
 
-        verify_route(Routes.routes[0], :GET,    '/car#index',    NilClass, '/car')
-        verify_route(Routes.routes[1], :GET,    '/car#new',      NilClass, '/car/new')
-        verify_route(Routes.routes[2], :POST,   '/car#create',   NilClass, '/car')
-        verify_route(Routes.routes[3], :GET,    '/car#edit',     NilClass, '/car/edit')
-        verify_route(Routes.routes[4], :PUT,    '/car#update',   NilClass, '/car')
-        verify_route(Routes.routes[5], :DELETE, '/car#destroy',  NilClass, '/car')
+        verify_route(Routes.routes[0], :GET,    '/car#index',    '/car')
+        verify_route(Routes.routes[1], :GET,    '/car#new',      '/car/new')
+        verify_route(Routes.routes[2], :POST,   '/car#create',   '/car')
+        verify_route(Routes.routes[3], :GET,    '/car#edit',     '/car/edit')
+        verify_route(Routes.routes[4], :PUT,    '/car#update',   '/car')
+        verify_route(Routes.routes[5], :DELETE, '/car#destroy',  '/car')
       end
 
       it 'creates all actions specified as parameter' do
@@ -261,7 +261,7 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 1
 
-        verify_route(Routes.routes[0], :GET, '/car#index', NilClass, '/car')
+        verify_route(Routes.routes[0], :GET, '/car#index', '/car')
       end
 
       it 'creates member actions for specific resource' do
@@ -277,10 +277,10 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 4
 
-        verify_route(Routes.routes[0], :GET,    '/car#get_path',    NilClass, '/car/get_path')
-        verify_route(Routes.routes[1], :POST,   '/car#post_path',   NilClass, '/car/post_path')
-        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    NilClass, '/car/put_path')
-        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', NilClass, '/car/delete_path')
+        verify_route(Routes.routes[0], :GET,    '/car#get_path',    '/car/get_path')
+        verify_route(Routes.routes[1], :POST,   '/car#post_path',   '/car/post_path')
+        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    '/car/put_path')
+        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', '/car/delete_path')
       end
 
       it 'creates collection actions for specific resource' do
@@ -296,10 +296,10 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 4
 
-        verify_route(Routes.routes[0], :GET,    '/car#get_path',    NilClass, '/car/get_path')
-        verify_route(Routes.routes[1], :POST,   '/car#post_path',   NilClass, '/car/post_path')
-        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    NilClass, '/car/put_path')
-        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', NilClass, '/car/delete_path')
+        verify_route(Routes.routes[0], :GET,    '/car#get_path',    '/car/get_path')
+        verify_route(Routes.routes[1], :POST,   '/car#post_path',   '/car/post_path')
+        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    '/car/put_path')
+        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', '/car/delete_path')
       end
 
       it 'allows to create nested resources' do
@@ -311,19 +311,19 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 13
 
-        verify_route(Routes.routes[0],  :GET,     '/wheel#index',    NilClass, '/car/wheel')
-        verify_route(Routes.routes[1],  :GET,     '/wheel#new',      NilClass, '/car/wheel/new')
-        verify_route(Routes.routes[2],  :POST,    '/wheel#create',   NilClass, '/car/wheel')
-        verify_route(Routes.routes[3],  :GET,     '/wheel#edit',     NilClass, '/car/wheel/edit')
-        verify_route(Routes.routes[4],  :PUT,     '/wheel#update',   NilClass, '/car/wheel')
-        verify_route(Routes.routes[5],  :DELETE,  '/wheel#destroy',  NilClass, '/car/wheel')
-        verify_route(Routes.routes[6],  :GET,     '/door#index',     NilClass, '/car/door')
-        verify_route(Routes.routes[7],  :GET,     '/door#new',       NilClass, '/car/door/new')
-        verify_route(Routes.routes[8],  :GET,     '/door#show',      NilClass, '/car/door/:id')
-        verify_route(Routes.routes[9],  :POST,    '/door#create',    NilClass, '/car/door')
-        verify_route(Routes.routes[10], :GET,     '/door#edit',      NilClass, '/car/door/:id/edit')
-        verify_route(Routes.routes[11], :PUT,     '/door#update',    NilClass, '/car/door/:id')
-        verify_route(Routes.routes[12], :DELETE,  '/door#destroy',   NilClass, '/car/door/:id')
+        verify_route(Routes.routes[0],  :GET,     '/wheel#index',    '/car/wheel')
+        verify_route(Routes.routes[1],  :GET,     '/wheel#new',      '/car/wheel/new')
+        verify_route(Routes.routes[2],  :POST,    '/wheel#create',   '/car/wheel')
+        verify_route(Routes.routes[3],  :GET,     '/wheel#edit',     '/car/wheel/edit')
+        verify_route(Routes.routes[4],  :PUT,     '/wheel#update',   '/car/wheel')
+        verify_route(Routes.routes[5],  :DELETE,  '/wheel#destroy',  '/car/wheel')
+        verify_route(Routes.routes[6],  :GET,     '/door#index',     '/car/door')
+        verify_route(Routes.routes[7],  :GET,     '/door#new',       '/car/door/new')
+        verify_route(Routes.routes[8],  :GET,     '/door#show',      '/car/door/:id')
+        verify_route(Routes.routes[9],  :POST,    '/door#create',    '/car/door')
+        verify_route(Routes.routes[10], :GET,     '/door#edit',      '/car/door/:id/edit')
+        verify_route(Routes.routes[11], :PUT,     '/door#update',    '/car/door/:id')
+        verify_route(Routes.routes[12], :DELETE,  '/door#destroy',   '/car/door/:id')
       end
     end
 
@@ -338,13 +338,13 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 7
 
-        verify_route(Routes.routes[0], :GET,    '/car#index',    NilClass, '/car')
-        verify_route(Routes.routes[1], :GET,    '/car#new',      NilClass, '/car/new')
-        verify_route(Routes.routes[2], :GET,    '/car#show',     NilClass, '/car/:id')
-        verify_route(Routes.routes[3], :POST,   '/car#create',   NilClass, '/car')
-        verify_route(Routes.routes[4], :GET,    '/car#edit',     NilClass, '/car/:id/edit')
-        verify_route(Routes.routes[5], :PUT,    '/car#update',   NilClass, '/car/:id')
-        verify_route(Routes.routes[6], :DELETE, '/car#destroy',  NilClass, '/car/:id')
+        verify_route(Routes.routes[0], :GET,    '/car#index',    '/car')
+        verify_route(Routes.routes[1], :GET,    '/car#new',      '/car/new')
+        verify_route(Routes.routes[2], :GET,    '/car#show',     '/car/:id')
+        verify_route(Routes.routes[3], :POST,   '/car#create',   '/car')
+        verify_route(Routes.routes[4], :GET,    '/car#edit',     '/car/:id/edit')
+        verify_route(Routes.routes[5], :PUT,    '/car#update',   '/car/:id')
+        verify_route(Routes.routes[6], :DELETE, '/car#destroy',  '/car/:id')
       end
 
       it 'creates all actions specified as parameter' do
@@ -353,7 +353,7 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 1
 
-        verify_route(Routes.routes[0], :GET, '/car#index', NilClass, '/car')
+        verify_route(Routes.routes[0], :GET, '/car#index', '/car')
       end
 
       it 'creates member actions for specific resource' do
@@ -369,10 +369,10 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 4
 
-        verify_route(Routes.routes[0], :GET,    '/car#get_path',    NilClass, '/car/:car_id/get_path')
-        verify_route(Routes.routes[1], :POST,   '/car#post_path',   NilClass, '/car/:car_id/post_path')
-        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    NilClass, '/car/:car_id/put_path')
-        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', NilClass, '/car/:car_id/delete_path')
+        verify_route(Routes.routes[0], :GET,    '/car#get_path',    '/car/:car_id/get_path')
+        verify_route(Routes.routes[1], :POST,   '/car#post_path',   '/car/:car_id/post_path')
+        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    '/car/:car_id/put_path')
+        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', '/car/:car_id/delete_path')
       end
 
       it 'creates collection actions for specific resource' do
@@ -388,10 +388,10 @@ module Kawaii::Routing
         end
         expect(Routes.routes.length).to eq 4
 
-        verify_route(Routes.routes[0], :GET,    '/car#get_path',    NilClass, '/car/get_path')
-        verify_route(Routes.routes[1], :POST,   '/car#post_path',   NilClass, '/car/post_path')
-        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    NilClass, '/car/put_path')
-        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', NilClass, '/car/delete_path')
+        verify_route(Routes.routes[0], :GET,    '/car#get_path',    '/car/get_path')
+        verify_route(Routes.routes[1], :POST,   '/car#post_path',   '/car/post_path')
+        verify_route(Routes.routes[2], :PUT,    '/car#put_path',    '/car/put_path')
+        verify_route(Routes.routes[3], :DELETE, '/car#delete_path', '/car/delete_path')
       end
 
       it 'allows to create nested resources' do
@@ -404,29 +404,29 @@ module Kawaii::Routing
 
         expect(Routes.routes.length).to eq 13
 
-        verify_route(Routes.routes[0], :GET,     '/wheel#index',    NilClass, '/car/:car_id/wheel')
-        verify_route(Routes.routes[1], :GET,     '/wheel#new',      NilClass, '/car/:car_id/wheel/new')
-        verify_route(Routes.routes[2], :POST,    '/wheel#create',   NilClass, '/car/:car_id/wheel')
-        verify_route(Routes.routes[3], :GET,     '/wheel#edit',     NilClass, '/car/:car_id/wheel/edit')
-        verify_route(Routes.routes[4], :PUT,     '/wheel#update',   NilClass, '/car/:car_id/wheel')
-        verify_route(Routes.routes[5], :DELETE,  '/wheel#destroy',  NilClass, '/car/:car_id/wheel')
-        verify_route(Routes.routes[6], :GET,     '/door#index',     NilClass, '/car/:car_id/door')
-        verify_route(Routes.routes[7], :GET,     '/door#new',       NilClass, '/car/:car_id/door/new')
-        verify_route(Routes.routes[8], :GET,     '/door#show',      NilClass, '/car/:car_id/door/:id')
-        verify_route(Routes.routes[9], :POST,    '/door#create',    NilClass, '/car/:car_id/door')
-        verify_route(Routes.routes[10], :GET,    '/door#edit',      NilClass, '/car/:car_id/door/:id/edit')
-        verify_route(Routes.routes[11], :PUT,    '/door#update',    NilClass, '/car/:car_id/door/:id')
-        verify_route(Routes.routes[12], :DELETE, '/door#destroy',   NilClass, '/car/:car_id/door/:id')
+        verify_route(Routes.routes[0], :GET,     '/wheel#index',    '/car/:car_id/wheel')
+        verify_route(Routes.routes[1], :GET,     '/wheel#new',      '/car/:car_id/wheel/new')
+        verify_route(Routes.routes[2], :POST,    '/wheel#create',   '/car/:car_id/wheel')
+        verify_route(Routes.routes[3], :GET,     '/wheel#edit',     '/car/:car_id/wheel/edit')
+        verify_route(Routes.routes[4], :PUT,     '/wheel#update',   '/car/:car_id/wheel')
+        verify_route(Routes.routes[5], :DELETE,  '/wheel#destroy',  '/car/:car_id/wheel')
+        verify_route(Routes.routes[6], :GET,     '/door#index',     '/car/:car_id/door')
+        verify_route(Routes.routes[7], :GET,     '/door#new',       '/car/:car_id/door/new')
+        verify_route(Routes.routes[8], :GET,     '/door#show',      '/car/:car_id/door/:id')
+        verify_route(Routes.routes[9], :POST,    '/door#create',    '/car/:car_id/door')
+        verify_route(Routes.routes[10], :GET,    '/door#edit',      '/car/:car_id/door/:id/edit')
+        verify_route(Routes.routes[11], :PUT,    '/door#update',    '/car/:car_id/door/:id')
+        verify_route(Routes.routes[12], :DELETE, '/door#destroy',   '/car/:car_id/door/:id')
       end
     end
 
     private
 
-    def verify_route(route, method, mapping, handler_class, path)
-      expect(route).to_not eq         nil
+    def verify_route(route, method, mapping, path)
+      expect(route).to_not be         nil
       expect(route.http_method).to eq method
       expect(route.mapping).to eq     mapping
-      expect(route.handler).to be_an  handler_class
+      expect(route.handler).to be_an  Kawaii::Routing::Handler
       expect(route.path).to eq        path
     end
   end
