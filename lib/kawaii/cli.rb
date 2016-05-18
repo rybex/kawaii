@@ -5,8 +5,7 @@ module Kawaii
 
     desc 'new', 'Create new project structure'
     def new(name)
-      script = new_project_generator(name)
-      script.invoke_all
+      new_project_generator(name).invoke_all
     end
 
     private
