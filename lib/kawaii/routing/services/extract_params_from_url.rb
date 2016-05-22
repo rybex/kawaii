@@ -15,7 +15,19 @@ module Kawaii
         end
 
         def pattern_to_regexp(pattern)
-          Regexp.new(Regexp.escape(pattern).gsub(/:(\w+)/, '(?<\1>.+?)'))
+          Regexp.new(format_pattern(pattern))
+        end
+
+        def format_pattern(pattern)
+          Regexp.escape(pattern).gsub(regexp, replacement)
+        end
+
+        def regexp
+          /:(\w+)/
+        end
+
+        def replacement
+          '(?<\1>.+?)'
         end
       end
     end
