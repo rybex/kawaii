@@ -21,11 +21,11 @@ module Kawaii
       attr_reader :path, :mapping, :handler
 
       def controller_handler(mapping)
-        Kawaii::Routing::Services::FindController.new.call(mapping)
+        Services::FindController.new.call(mapping)
       end
 
       def get_url_params(request_url)
-        Kawaii::Routing::Services::ExtractParamsFromUrl.new.call(path, request_url)
+        Services::ExtractParamsFromUrl.new.call(path, request_url)
       end
 
       def rack_request(env)

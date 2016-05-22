@@ -226,13 +226,27 @@ module Kawaii::Routing
         verify_route(Routes.routes[3],  :GET,     'test_namespace/wheel#edit',     '/test_namespace/wheel/edit')
         verify_route(Routes.routes[4],  :PUT,     'test_namespace/wheel#update',   '/test_namespace/wheel')
         verify_route(Routes.routes[5],  :DELETE,  'test_namespace/wheel#destroy',  '/test_namespace/wheel')
-        verify_route(Routes.routes[6],  :GET,     'test_namespace/door#index',      '/test_namespace/door')
+        verify_route(Routes.routes[6],  :GET,     'test_namespace/door#index',     '/test_namespace/door')
         verify_route(Routes.routes[7],  :GET,     'test_namespace/door#new',       '/test_namespace/door/new')
         verify_route(Routes.routes[8],  :GET,     'test_namespace/door#show',      '/test_namespace/door/:id')
         verify_route(Routes.routes[9],  :POST,    'test_namespace/door#create',    '/test_namespace/door')
         verify_route(Routes.routes[10], :GET,     'test_namespace/door#edit',      '/test_namespace/door/:id/edit')
         verify_route(Routes.routes[11], :PUT,     'test_namespace/door#update',    '/test_namespace/door/:id')
         verify_route(Routes.routes[12], :DELETE,  'test_namespace/door#destroy',   '/test_namespace/door/:id')
+      end
+
+      it 'allows to neste namespaces' do
+        Class.new(Routes) do
+          namespace :test_namespace do
+            namespace :nested_namespace do
+              get :get_path, 'test#get_action'
+            end
+          end
+        end
+
+        expect(Routes.routes.length).to eq 1
+
+        verify_route(Routes.routes[0], :GET, 'test_namespace/nested_namespace/test#get_action', '/test_namespace/nested_namespace/get_path')
       end
     end
 

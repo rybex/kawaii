@@ -1,9 +1,9 @@
 module Kawaii
   module Routing
     class Namespace
-      def initialize(routes, namespace_name, &block)
-        @routes         = routes
-        @namespace_name = namespace_name
+      def initialize(routes, name, &block)
+        @routes = routes
+        @name   = name
         instance_eval(&block) if block_given?
       end
 
@@ -24,23 +24,27 @@ module Kawaii
       end
 
       def resource(resource_name, methods = nil, &block)
-        Resource.new(routes, resource_name, methods, namespace_name, &block)
+        Resource.new(routes, resource_name, methods, name, &block)
       end
 
       def resources(resources_name, methods = nil, &block)
-        Resources.new(routes, resources_name, methods, namespace_name, &block)
+        Resources.new(routes, resources_name, methods, name, &block)
+      end
+
+      def namespace(namespace_name, &block)
+        Namespace.new(routes, wrap_in_namespace(namespace_name), &block)
       end
 
       private
 
-      attr_reader :routes, :namespace_name
+      attr_reader :routes, :name
 
       def namespace_path(path)
-        "/#{namespace_name}/#{path}"
+        "/#{name}/#{path}"
       end
 
       def wrap_in_namespace(mapping)
-        "#{namespace_name}/#{mapping}"
+        "#{name}/#{mapping}"
       end
     end
   end
