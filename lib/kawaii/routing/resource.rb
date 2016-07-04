@@ -9,11 +9,15 @@ module Kawaii
         @parent            = parent
         @methods           = methods || METHODS
         @namespace         = namespace
+        @block             = block
         @actions_generator = Services::GenerateResourceActions
         generate_actions
-        instance_eval(&block) if block_given?
       end
-      attr_reader :routes, :name, :parent, :namespace, :actions_generator
+      attr_reader :routes, :name, :parent, :namespace, :actions_generator, :block
+
+      def generate
+        instance_eval(block) if block
+      end
 
       def member(&block)
         Member.new(routes, self, &block)
